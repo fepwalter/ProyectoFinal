@@ -1,6 +1,5 @@
-import { Product } from "./product.object";
-import { productConverter } from "./product.object.js";
-import db from "../data/data.js";
+import { Product, productConverter} from "./product.object.js";
+import { db } from "../data/data.js";
 import { collection, getDocs, doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 
 const productsCollection = collection(db, "products").withConverter(productConverter);

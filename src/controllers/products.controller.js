@@ -16,6 +16,7 @@ export const getProductByIDController = async (req, res) => {
             return res.status(400).json({ message: "Product ID is required" });
         }
         const product = await getProductByIDService(id);
+        res.status(200).json(product);
     } catch (error) {
         res.status(500).json({ message: "Error retrieving product: " + error });
     }
