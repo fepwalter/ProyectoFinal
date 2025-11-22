@@ -1,9 +1,8 @@
 export class Product {
-    constructor(name, description, price, stock) {
+    constructor(name, categorie, price, ) {
         this.name = name;
-        this.description = description;
+        this.categorie = categorie;
         this.price = price;
-        this.stock = stock;
     
 
     for (const [key, value] of Object.entries(this)) {
@@ -19,13 +18,12 @@ export const productConverter = {
     toFirestore: (product) => {
         return {
             name: product.name,
-            description: product.description,
+            categorie: product.categorie,
             price: product.price,
-            stock: product.stock
             };
     },
     fromFirestore: (snapshot, options) => {
         const data = snapshot.data(options);
-        return new Product(data.name, data.description, data.price, data.stock);
+        return new Product(data.name, data.categorie, data.price);
     }
 };

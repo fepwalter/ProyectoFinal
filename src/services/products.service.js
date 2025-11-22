@@ -1,4 +1,4 @@
-import { getAllProductsModel, getProductByIDModel, createProductModel, deleteProductModel } from "../models/products.model.js";
+import { getAllProductsModel, getProductByIDModel, createProductModel, deleteProductModel, updateProductModel } from "../models/products.model.js";
 
 export const getProductsService = async () => {
     return (
@@ -45,6 +45,19 @@ export const deleteProductService = async (id) => {
             try {
                 const result = await deleteProductModel(id);
                 resolve(result);
+            } catch (error) {
+                reject(error);
+            }
+        })
+    )
+};
+
+export const updateProductService = async (id, productData) => {
+    return (
+        new Promise(async (resolve, reject) => {
+            try {
+                const updatedProduct = await updateProductModel(id, productData);
+                resolve(updatedProduct);
             } catch (error) {
                 reject(error);
             }

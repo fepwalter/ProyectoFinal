@@ -64,3 +64,19 @@ export const deleteProductModel = async (id) => {
         })
     )
 };
+
+export const updateProductModel = async (id, productData) => {
+    return (
+        new Promise(async (resolve, reject) => {
+            try {
+                const productDoc = doc(productsCollection, id);
+                const updatedProduct = new Product(productData.name, productData.description, productData.price, productData.stock);
+                await setDoc(productDoc, updatedProduct);
+                resolve({ id: productDoc.id, ...updatedProduct });
+            }
+            catch (error) {
+                reject("Error updating product: " + error);
+            }
+        })
+    )
+};
