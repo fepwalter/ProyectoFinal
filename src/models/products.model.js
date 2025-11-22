@@ -70,7 +70,7 @@ export const updateProductModel = async (id, productData) => {
         new Promise(async (resolve, reject) => {
             try {
                 const productDoc = doc(productsCollection, id);
-                const updatedProduct = new Product(productData.name, productData.description, productData.price, productData.stock);
+                const updatedProduct = new Product(productData.name, productData.categorie, productData.price);
                 await setDoc(productDoc, updatedProduct);
                 resolve({ id: productDoc.id, ...updatedProduct });
             }
