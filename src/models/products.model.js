@@ -40,7 +40,7 @@ export const createProductModel = async (productData) => {
     return (
         new Promise(async (resolve, reject) => {
             try {
-                const newProduct = new Product(productData.name, productData.description, productData.price, productData.stock);
+                const newProduct = new Product(productData.name, productData.categorie, productData.price);
                 const newProductDoc = doc(productsCollection);
                 await setDoc(newProductDoc, newProduct);
                 resolve({ id: newProductDoc.id, ...newProduct });
