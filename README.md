@@ -93,11 +93,19 @@ npm install
 #### DELETE PRODUCT
 
 - **DELETE** `/api/products/:id`
-- **Descripcion:** 
-- **Respuestas de Ejemplo:**
+- **Descripcion:** Eliminar un producto de la base de datos pasando un ID
+- **Respuestas de Ejemplo:** 204 para respuesta correcta. Si no existe el ID devuelve 400. Si la peticion falla devuelve 500
+
 
 #### UPDATE PRODUCT
 
 - **PUT** `/api/products/:id`
-- **Descripcion:** 
-- **Respuestas de Ejemplo:**
+- **Descripcion:** Se actualiza el registro completo. Recibe en el body un objeto de tipo product:
+```json
+{
+    name:"nombre para actualizar",
+    categorie:"la categoria para actualizar",
+    price:10 (type number)
+}
+```
+- **Respuestas de Ejemplo:** Status 200 mas objeto actualizado en formato json.
